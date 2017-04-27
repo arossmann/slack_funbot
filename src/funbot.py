@@ -71,15 +71,7 @@ def say_bye(user_mention):
 
 def say_roflcoptor():
     """ Give the user the roflcoptor"""
-    reponse = """
-    ROFL:ROFL:ROFL:ROFL
-             _^___
-    L    __/   [] \
-    LOL===__        \
-    L      \________]
-             I   I
-            --------/
-    """
+    reponse = "http://i.imgur.com/AeAFkEf.gif"
     return reponse
 
 def handle_message(message, user, channel):
