@@ -19,10 +19,13 @@ def is_for_me(event):
         if is_private(event):
             return True
         # in case it is not a private message check mention
-        text = event.get('text')
-        channel = event.get('channel')
-        if SLACK_FUN_mention in text.strip().split():
-            return True
+        if len(event.get('text')) > 0:
+            text = event.get('text')
+            channel = event.get('channel')
+            if SLACK_FUN_mention in text.strip().split():
+                return True
+        else:
+            return False
 
 def post_message(message, channel):
     SLACK_FUN_client.api_call('chat.postMessage', channel=channel,
