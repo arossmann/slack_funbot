@@ -76,7 +76,7 @@ def say_roflcopter():
 
 def message_too_short():
     """message has no content"""
-    response = "Yep. it's me."
+    response = 'Yep. it\'s me.'
     return response
 
 def handle_message(message, user, channel):
