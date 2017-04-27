@@ -71,15 +71,15 @@ def say_bye(user_mention):
 
 def say_roflcoptor():
     """ Give the user the roflcoptor"""
-    reponse = ("\n"
-               "    ROFL:ROFL:ROFL:ROFL\n"
-               "        ___^___ _\n"
-               "L    __/      [] \    \n"
-               "LOL===__           \\n"
-               "L      \___ ___ ___]\n"
-               "             I   I\n"
-               "         ----------/\n"
-               "    ")
+    reponse = """
+    ROFL:ROFL:ROFL:ROFL
+             _^___
+    L    __/   [] \
+    LOL===__        \
+    L      \________]
+             I   I
+            --------/
+    """
     return reponse
 
 def handle_message(message, user, channel):
