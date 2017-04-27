@@ -36,10 +36,10 @@ def get_mention(user):
 
 SLACK_FUN_mention = get_mention(SLACK_FUN_ID)
 
-def is_roflcoptor(message):
+def is_roflcopter(message):
     tokens = [word.lower() for word in message.strip().split()]
     return any(g in tokens
-               for g in ['roflcoptor', 'rofl'])
+               for g in ['roflcopter', 'rofl'])
 
 def is_hi(message):
     tokens = [word.lower() for word in message.strip().split()]
@@ -69,20 +69,27 @@ def say_bye(user_mention):
                                        'Au revoir!'])
     return response_template.format(mention=user_mention)
 
-def say_roflcoptor():
-    """ Give the user the roflcoptor"""
-    reponse = "http://i.imgur.com/AeAFkEf.gif"
+def say_roflcopter():
+    """ Give the user the roflcopter"""
+    reponse = "You asked for the roflcopter? Here you go. http://i.imgur.com/AeAFkEf.gif"
     return reponse
 
+def message_too_short():
+    """message has no content"""
+    response = "Yep. it's me."
+    return response
+
 def handle_message(message, user, channel):
-    if is_hi(message):
+    if len(message) == 0:
+        post_message(message=message_too_short(),channel=channel)
+    elif is_hi(message):
         user_mention = get_mention(user)
         post_message(message=say_hi(user_mention), channel=channel)
     elif is_bye(message):
         user_mention = get_mention(user)
         post_message(message=say_bye(user_mention), channel=channel)
-    elif is_roflcoptor(message):
-        post_message(message=say_roflcoptor(),channel=channel)
+    elif is_roflcopter(message):
+        post_message(message=say_roflcopter(),channel=channel)
 
 def run():
     if SLACK_FUN_client.rtm_connect():
